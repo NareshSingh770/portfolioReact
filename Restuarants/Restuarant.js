@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import MenuCards from './MenuCards';
-import MenuItems from './MenuItems';
+import MenuList from './MenuItems';
 
-const reverseList = ['All', ...new Set(MenuItems.map((val) => {
+const reverseList = ['All', ...new Set(MenuList.map((val) => {
     return val.category;
 }))];
 
 // const reverseList = categoryList.reverse();
 
 const Restuarant = () => {
-    const totalItems = MenuItems.length;
-    const [list, setList] = useState(MenuItems);
+    const totalItems = MenuList.length;
+    const [list, setList] = useState(MenuList);
     const [total, setTotal] = useState(totalItems);
     const [activeClass, setActive] = useState('All');
 
@@ -23,11 +23,11 @@ const Restuarant = () => {
 
 
         if (btnVal === 'All') {
-            setList(MenuItems);
-            setTotal(MenuItems.length);
+            setList(MenuList);
+            setTotal(MenuList.length);
         } else {
 
-            const filteredList = MenuItems.filter((val) => {
+            const filteredList = MenuList.filter((val) => {
                 return val.category === btnVal;
             });
             setTotal(filteredList.length);

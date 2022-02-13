@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './Account.css';
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -82,7 +83,7 @@ const SignIn = (props) => {
 
             <div className="container">
                 <div className="card card-container">
-                    {curUser === 'password' ? <p className='alert alert-danger text-center'><strong>Enter Password</strong></p> : ''}
+                    {curUser === 'password' && (<p className='alert alert-danger text-center'><strong>Enter Password</strong></p>)}
                     {curUser === 'username' ? <p className='alert alert-danger text-center'><strong>User user name</strong></p> : ''}
                     {curUser === 'invalid' ? <p className='alert alert-danger text-center'><strong>Enter Valid Credential</strong></p> : ''}
                     {curUser === 'incorrect' ? <p className='alert alert-danger text-center'><strong>User Credential Incorrect</strong></p> : ''}
@@ -103,6 +104,7 @@ const SignIn = (props) => {
                     <a href="/" className="forgot-password">
                         Forgot the password?
                     </a>
+                    <h5 className='text-center text-danger mb-0 mt-3'><NavLink to='/sign-up'>Create a new Account</NavLink></h5>
                 </div>
             </div>
         </>

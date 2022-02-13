@@ -49,6 +49,7 @@ const Contact = () => {
         dispatchSub({ type: 'SUB_DATA', payload: stateTyped });
 
     }
+
     useEffect(() => {
         localStorage.setItem('subscribers', JSON.stringify(stateSub))
     }, [stateSub])

@@ -1,5 +1,5 @@
 import React from 'react'
-import colorOptions from '../data/ColorOption'
+import colorOptions from './ColorOption'
 
 const ColorsTheme = (props) => {
     return (

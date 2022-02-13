@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
-import ColorsTheme from './components/ColorsTheme'
+import ColorsTheme from './ColorsTheme'
 
 const Header = (props) => {
 
@@ -32,18 +32,6 @@ const Header = (props) => {
                         <li className="nav-item">
                             <NavLink className="nav-link" to='/'>Home</NavLink>
                         </li>
-                        {/* <li className="nav-item">
-                            <NavLink className="nav-link" to="/projects/restuarant">Restuarant</NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/projects/weather">Weather</NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/projects/number-with-reducer">Number</NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/projects/todo-list">Todo List</NavLink>
-                        </li> */}
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/projects">Projects</NavLink>
                         </li>

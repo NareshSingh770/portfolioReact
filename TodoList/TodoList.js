@@ -11,9 +11,10 @@ const getlocalData = () => {
     }
 }
 const TodoList = () => {
-
+    const [state, setState] = useState('add');
     const [text, setText] = useState('');
     const [list, setList] = useState(getlocalData);
+
 
 
     const inputEvent = (e) => {
@@ -37,17 +38,40 @@ const TodoList = () => {
     const deleteLists = (id) => {
         setList((oldList) => {
             return oldList.filter((val) => {
-                return val.id !== id;
+                return val.id != id;
             })
         })
     }
-
+    const doneEdit = () => {
+        const data = list
+        data.forEach(val => {
+            if (val.id === state) {
+                val.name = text
+            }
+        })
+        console.log(data)
+        setText('')
+        setList(data)
+        setState('add')
+    }
     const deleteAll = () => {
         setList([])
     }
+
+    const editNotes = (id) => {
+        list.forEach(val => {
+            if (id === val.id) {
+                setText(val.name)
+                setState(id)
+            }
+        })
+
+    }
+
+
     useEffect(() => {
         localStorage.setItem('ToDoList', JSON.stringify(list));
-    }, [list])
+    }, [list, text])
     return (
         <>
             <div className="card todo-list-wrap">
@@ -57,7 +81,9 @@ const TodoList = () => {
                     <input type="text" className='form-control' value={text} onChange={inputEvent} />
                 </div>
                 <div className="card-footer text-end">
-                    <button className="btn btn-primary" onClick={addList}>Add</button>
+                    {
+                        state === 'add' ? <button className="btn btn-primary" onClick={addList}>Add</button> : <button className="btn btn-primary" onClick={doneEdit}>Done</button>
+                    }
                 </div>
             </div>
             <div className='text-center mb-5'>
@@ -66,7 +92,7 @@ const TodoList = () => {
             {
                 list.map((val, ind) => {
                     return (
-                        <List key={ind} id={val.id} list={val.name} deleteList={deleteLists} />
+                        <List key={ind} id={val.id} edit={editNotes} list={val.name} deleteList={deleteLists} />
                     )
 
                 })

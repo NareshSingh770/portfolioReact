@@ -363,3 +363,7 @@ footer{
 .project-cards .title h5 {
   color: var(--bs-danger);
 }
+.modal {
+  background: #000000ad;
+  display: block !important;
+}

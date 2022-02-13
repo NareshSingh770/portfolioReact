@@ -1,10 +1,10 @@
 const colorOptions = [
     {
-        color: "#6610f2"
+        color: "#5300d9"
 
     },
     {
-        color: "#ff5722"
+        color: "#e12500"
 
     },
     {
@@ -20,7 +20,7 @@ const colorOptions = [
 
     },
     {
-        color: "#0dcaf0"
+        color: "#4996a4"
 
     }
 ]
