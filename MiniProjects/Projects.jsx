@@ -68,6 +68,19 @@ const Projects = () => {
                             </div>
                         </NavLink>
                     </div>
+                    <div className='col-md-4 mb-5'>
+                        <NavLink to='/projects/contacts'>
+                            <div className=' project-cards'>
+                                <div className='project-img'>
+                                    <img src={project4} alt='projects' />
+                                </div>
+                                <div className='title'>
+                                    <h5>Phonebook/Contacts</h5>
+                                    <p>Categories with Breakfast, Lunch, Dinner as per the applied filter buttons</p>
+                                </div>
+                            </div>
+                        </NavLink>
+                    </div>
                 </div>
             </div>
 

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import Popup from '../../modal/Popup'
+// import Popup from '../../modal/Popup'
 import { ModalOpen } from '../../context/Context'
 
 const Hero = () => {

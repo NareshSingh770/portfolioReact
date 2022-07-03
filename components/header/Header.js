@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Outlet } from 'react-router-dom'
 import ColorsTheme from './ColorsTheme'
 
 const Header = (props) => {
@@ -43,9 +43,10 @@ const Header = (props) => {
                         </li>
                     </ul>
                     <ColorsTheme changeColor={applyColorTheme} />
-                    <button className='btn btn-outline-warning text-warning logout-btn' onClick={props.userlogout}><i class="fa fa-power-off" aria-hidden="true"></i></button>
+                    <button className='btn btn-outline-warning text-warning logout-btn' onClick={props.userlogout}><i className="fa fa-power-off" aria-hidden="true"></i></button>
                 </div>
             </nav>
+            <Outlet />
         </>
     )
 }

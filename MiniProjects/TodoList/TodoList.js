@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useReducer } from 'react'
 import List from './List'
+import reducerCity from '../reducers/Reducers';
 
 const getlocalData = () => {
     const allData = localStorage.getItem('ToDoList');
@@ -12,13 +13,13 @@ const getlocalData = () => {
 }
 const TodoList = () => {
     const [state, setState] = useState('add');
-    const [text, setText] = useState('');
+    const [text, setText] = useReducer(reducerCity, '');
     const [list, setList] = useState(getlocalData);
 
 
 
     const inputEvent = (e) => {
-        setText(e.target.value);
+        setText({ type: 'INPUT_TYPE', element: e });
     }
 
     const addList = () => {
@@ -38,7 +39,7 @@ const TodoList = () => {
     const deleteLists = (id) => {
         setList((oldList) => {
             return oldList.filter((val) => {
-                return val.id != id;
+                return val.id !== id;
             })
         })
     }

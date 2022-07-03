@@ -1,16 +1,10 @@
 import React, { useEffect, useReducer } from 'react'
+import reducerCity from '../reducers/Reducers'
+import { reducerSelCity } from '../reducers/Reducers';
 
 
 
-const reducerCity = (state, { type, city }) => {
-    switch (type) {
-        case 'TYPE_CITY':
-            const cityName = city.target.value
-            return cityName
 
-        default: return state
-    }
-}
 const reducerShowWeather = (state, { type, weatherDetail }) => {
     switch (type) {
         case 'SHOW_WEATHER':
@@ -20,44 +14,37 @@ const reducerShowWeather = (state, { type, weatherDetail }) => {
     }
 }
 
-const reducerSelCity = (state, { type, payload }) => {
-    switch (type) {
-        case 'SELECT_CITY':
 
-            return payload
-
-        default: return state
-    }
-}
 const Weather = () => {
 
     const [inputType, dispatchCity] = useReducer(reducerCity, '')
     const [selectedCity, dispatchSelCity] = useReducer(reducerSelCity, 'delhi')
     const [weatherData, dispatchWeather] = useReducer(reducerShowWeather, '')
 
-    const weatherAPIData = async () => {
-        try {
-            let url = `https://api.openweathermap.org/data/2.5/weather?q=${selectedCity}&units=metric&appid=2d09fd0d294278c0015aecacf7df42dd`
 
-            const res = await fetch(url);
-            const data = await res.json();
-            // console.log(data)
-            const { temp, humidity, temp_max, temp_min } = data.main;
-            const weath = data.weather[0].main;
-            const wind = data.wind.speed;
-            const time = new Date().toLocaleTimeString();
-            // console.log(time);
-            const allExtractData = {
-                temp, humidity, temp_max, temp_min, weath, wind, time
-            }
-
-
-            dispatchWeather({ type: 'SHOW_WEATHER', weatherDetail: allExtractData })
-        } catch (error) {
-            console.log(`this is error ${error}`)
-        }
-    }
     useEffect(() => {
+        const weatherAPIData = async () => {
+            try {
+                let url = `https://api.openweathermap.org/data/2.5/weather?q=${selectedCity}&units=metric&appid=2d09fd0d294278c0015aecacf7df42dd`
+
+                const res = await fetch(url);
+                const data = await res.json();
+                // console.log(data)
+                const { temp, humidity, temp_max, temp_min } = data.main;
+                const weath = data.weather[0].main;
+                const wind = data.wind.speed;
+                const time = new Date().toLocaleTimeString();
+                // console.log(time);
+                const allExtractData = {
+                    temp, humidity, temp_max, temp_min, weath, wind, time
+                }
+
+
+                dispatchWeather({ type: 'SHOW_WEATHER', weatherDetail: allExtractData })
+            } catch (error) {
+                alert("Cann't find....")
+            }
+        }
         weatherAPIData()
     }, [selectedCity])
 
@@ -70,7 +57,7 @@ const Weather = () => {
                         <div className="card-weather p-4">
                             <div className="search-wrap">
                                 <div className="input-group mb-3">
-                                    <input type='text' name='city' value={inputType} placeholder='Enter any...' onChange={(e) => dispatchCity({ type: 'TYPE_CITY', city: e })} />
+                                    <input type='text' name='city' value={inputType} placeholder='Enter any...' onChange={(e) => dispatchCity({ type: 'INPUT_TYPE', element: e })} />
                                     <div className="input-group-append">
                                         <button className="btn btn-danger" type="submit" onClick={() => dispatchSelCity({ type: 'SELECT_CITY', payload: inputType })}>Go</button>
                                     </div>

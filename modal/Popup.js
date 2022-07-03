@@ -7,21 +7,21 @@ const Popup = () => {
 
     return (
         <>
-            <div class="modal">
-                <div class="modal-dialog">
-                    <div class="modal-content">
+            <div className="modal">
+                <div className="modal-dialog">
+                    <div className="modal-content">
 
-                        <div class="modal-header">
-                            <h4 class="modal-title">Modal Heading</h4>
-                            <button type="button" class="close" onClick={() => setModal(!modalState)}>&times;</button>
+                        <div className="modal-header">
+                            <h4 className="modal-title">Modal Heading</h4>
+                            <button type="button" className="close" onClick={() => setModal(!modalState)}>&times;</button>
                         </div>
 
-                        <div class="modal-body">
+                        <div className="modal-body">
                             Content not updated...
                         </div>
 
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" onClick={() => setModal(!modalState)}>Close</button>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-danger" onClick={() => setModal(!modalState)}>Close</button>
                         </div>
 
                     </div>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import MenuCards from './MenuCards';
 import MenuList from './MenuItems';
 
@@ -9,12 +10,15 @@ const reverseList = ['All', ...new Set(MenuList.map((val) => {
 // const reverseList = categoryList.reverse();
 
 const Restuarant = () => {
+    const navigate = useNavigate();
     const totalItems = MenuList.length;
     const [list, setList] = useState(MenuList);
     const [total, setTotal] = useState(totalItems);
     const [activeClass, setActive] = useState('All');
 
-
+    const goBack = () => {
+        navigate(-1);
+    }
     const showItems = (e) => {
         const btnVal = e.target.innerHTML;
 
@@ -41,6 +45,9 @@ const Restuarant = () => {
         <>
             <div className='container restuarant'>
                 <div className="row">
+                    <div className='col-12'>
+                        <button className='btn btn-outlined-dark' onClick={goBack}>Back</button>
+                    </div>
                     <div className='col-md-12'>
                         <div className='navbar-items p-2 d-flex justify-content-center'>
                             {
